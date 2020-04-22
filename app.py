@@ -2,6 +2,7 @@ import base64
 import os
 from io import BytesIO
 
+import app as app
 import onetimepass
 import pyqrcode
 from flask import Flask, render_template, redirect, url_for, flash, session, \
@@ -14,6 +15,8 @@ from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import Length, EqualTo, DataRequired
+
+app.register_blueprint(mainBlueprint, url_defaults='/<lang>')
 
 # create application instance
 app = Flask(__name__)
